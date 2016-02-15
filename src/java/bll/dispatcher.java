@@ -7,9 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import dao.HibernateUtil;
-import dao.Operacion;
 import org.hibernate.SessionFactory;
 
 public class dispatcher extends HttpServlet {
@@ -19,10 +17,7 @@ public class dispatcher extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        HttpSession sesion = request.getSession();
         String boton = request.getParameter("boton").trim();
-        Operacion operacion = new Operacion();
-
         ServletContext sc = getServletContext();
         RequestDispatcher rd;
 
@@ -38,6 +33,22 @@ public class dispatcher extends HttpServlet {
                 break;
             case "Eliminar":
                 response.sendRedirect("vista/eliminar.jsp");
+                break;
+            case"AltaPersona":
+                rd = sc.getRequestDispatcher("/controladorAltaPersona");
+                rd.forward(request, response);
+                break;
+            case"BajaPersona":
+                rd = sc.getRequestDispatcher("/controladorBajaPersona");
+                rd.forward(request, response);
+                break;
+            case"ModificarPersona":
+                rd = sc.getRequestDispatcher("/controladorModificarPersona");
+                rd.forward(request, response);
+                break;
+            case"EliminarPersona":
+                rd = sc.getRequestDispatcher("/controladorEliminarPersona");
+                rd.forward(request, response);
                 break;
         }
     }
