@@ -13,6 +13,8 @@
     </head>
     <body>
         <%
+            HttpSession sesion = request.getSession(true);
+            
             response.sendRedirect("vista/inicio.jsp");
         %>
     </body>
