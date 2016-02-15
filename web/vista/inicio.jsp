@@ -9,14 +9,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Elecciones 2015</title>
+        <title>Personas Hibernate 1a1</title>
         <link rel="stylesheet" href="../css/pure-min.css">
         <link rel="stylesheet" href="../css/css.css">
         <script type="text/javascript" src="../js/js.js"></script>
     </head>
     <body>
         <div id="formulario">
-            <h1>Sistema Electoral 2015</h1>
+            <h1>Administración personas 1 a 1</h1>
             <form class="pure-form pure-form-aligned" method="post" action="../dispatcher">
                 <div class="pure-control-group">
                     <label for="nif">N.I.F:</label>
