@@ -34,19 +34,19 @@ public class dispatcher extends HttpServlet {
             case "Eliminar":
                 response.sendRedirect("vista/eliminar.jsp");
                 break;
-            case"AltaPersona":
+            case "AltaPersona":
                 rd = sc.getRequestDispatcher("/controladorAltaPersona");
                 rd.forward(request, response);
                 break;
-            case"BajaPersona":
+            case "BajaPersona":
                 rd = sc.getRequestDispatcher("/controladorBajaPersona");
                 rd.forward(request, response);
                 break;
-            case"ModificarPersona":
+            case "ModificarPersona":
                 rd = sc.getRequestDispatcher("/controladorModificarPersona");
                 rd.forward(request, response);
                 break;
-            case"EliminarPersona":
+            case "EliminarPersona":
                 rd = sc.getRequestDispatcher("/controladorEliminarPersona");
                 rd.forward(request, response);
                 break;
