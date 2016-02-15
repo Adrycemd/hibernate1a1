@@ -21,10 +21,10 @@
                 
                 <div class="pure-controls">
                     <input type="hidden" id="boton" name="boton" />
-                    <input class="pure-button" type="submit" id="alta" name="alta" value="Alta"  />
-                    <input class="pure-button" type="submit" id="enviar" name="enviar" value="Baja"  />
-                    <input class="pure-button" type="submit" id="modificar" name="modificar" value="Modificar" />
-                    <input class="pure-button" type="submit" id="eliminar" name="eliminar" value="Eliminar" />
+                    <input class="pure-button" type="submit" id="alta" name="alta" value="Alta" onclick="valorBoton(this.value)" />
+                    <input class="pure-button" type="submit" id="enviar" name="enviar" value="Baja" onclick="valorBoton(this.value)" />
+                    <input class="pure-button" type="submit" id="modificar" name="modificar" value="Modificar" onclick="valorBoton(this.value)" />
+                    <input class="pure-button" type="submit" id="eliminar" name="eliminar" value="Eliminar" onclick="valorBoton(this.value)" />
                 </div>
          
             </form>
