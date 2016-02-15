@@ -18,6 +18,13 @@ public class Direccion  implements java.io.Serializable {
 
     public Direccion() {
     }
+    
+    public Direccion(String calle, Integer numero, Integer piso, Character letra) {
+       this.calle = calle;
+       this.numero = numero;
+       this.piso = piso;
+       this.letra = letra;
+    }
 
     public Direccion(String calle, Integer numero, Integer piso, Character letra, Persona persona) {
        this.calle = calle;
