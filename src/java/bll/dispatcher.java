@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import dao.HibernateUtil;
 import dao.Operacion;
-import java.io.PrintWriter;
 import org.hibernate.SessionFactory;
 
 public class dispatcher extends HttpServlet {
@@ -27,35 +26,18 @@ public class dispatcher extends HttpServlet {
         ServletContext sc = getServletContext();
         RequestDispatcher rd;
 
-        try (PrintWriter out = response.getWriter()) {
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet NewServlet</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet NewServlet at " + request.getContextPath() + "</h1>");
-            out.println("<p>Pulsado botón " + boton + "</p>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-
         switch (boton) {
             case "Alta":
-                rd = sc.getRequestDispatcher("/controladorAlta");
-                rd.forward(request, response);
+                response.sendRedirect("vista/alta.jsp");
                 break;
             case "Baja":
-                rd = sc.getRequestDispatcher("/controladorBaja");
-                rd.forward(request, response);
+                response.sendRedirect("vista/baja.jsp");
                 break;
             case "Modificar":
-                rd = sc.getRequestDispatcher("/controladorModificar");
-                rd.forward(request, response);
+                response.sendRedirect("vista/modificar.jsp");
                 break;
             case "Eliminar":
-                rd = sc.getRequestDispatcher("/controladorEliminar");
-                rd.forward(request, response);
+                response.sendRedirect("vista/eliminar.jsp");
                 break;
         }
     }
@@ -79,7 +61,7 @@ public class dispatcher extends HttpServlet {
 
     @Override
     public String getServletInfo() {
-        return "Encargado de redirigir request y response al controlador adecuado.";
+        return "Encargado de redirigir al controlador adecuado.";
     }
 
 }
