@@ -17,16 +17,14 @@
     <body>
         <div id="formulario">
             <h1>Administración personas 1 a 1</h1>
-            <form class="pure-form pure-form-aligned" method="post" action="../dispatcher">
-                
+            <form class="pure-form" method="post" action="../dispatcher">
                 <div class="pure-controls">
                     <input type="hidden" id="boton" name="boton" />
-                    <input class="pure-button" type="submit" id="alta" name="alta" value="Alta" onclick="valorBoton(this.value)" />
-                    <input class="pure-button" type="submit" id="baja" name="baja" value="Baja" onclick="valorBoton(this.value)" />
-                    <input class="pure-button" type="submit" id="modificar" name="modificar" value="Modificar" onclick="valorBoton(this.value)" />
-                    <input class="pure-button" type="submit" id="eliminar" name="eliminar" value="Eliminar" onclick="valorBoton(this.value)" />
+                    <input class="pure-button pure-button-primary" type="submit" id="alta" name="alta" value="Alta" onclick="valorBoton(this.value)" />
+                    <input class="pure-button pure-button-primary" type="submit" id="baja" name="baja" value="Baja" onclick="valorBoton(this.value)" />
+                    <input class="pure-button pure-button-primary" type="submit" id="modificar" name="modificar" value="Modificar" onclick="valorBoton(this.value)" />
+                    <input class="pure-button pure-button-primary" type="submit" id="eliminar" name="eliminar" value="Eliminar" onclick="valorBoton(this.value)" />
                 </div>
-         
             </form>
         </div>
     </body>
