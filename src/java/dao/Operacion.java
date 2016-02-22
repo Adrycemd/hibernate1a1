@@ -50,9 +50,7 @@ public class Operacion {
                 transaccion.rollback();
             }
             return "Error al dar de baja a la persona.";
-
         }
-
     }
 
 }
