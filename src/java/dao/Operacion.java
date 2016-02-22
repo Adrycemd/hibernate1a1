@@ -57,7 +57,7 @@ public class Operacion {
             List lista;
 
             transaccion = sesion.beginTransaction();
-            consulta = sesion.createQuery("FROM persona WHERE DNI = :persona_dni");
+            consulta = sesion.createQuery("FROM Persona WHERE DNI = :persona_dni");
             consulta.setParameter("persona_dni", persona.getDni());
             lista = consulta.list();
 
