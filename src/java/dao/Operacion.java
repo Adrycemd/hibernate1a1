@@ -10,6 +10,28 @@ import pojo.Persona;
 
 public class Operacion {
 
+    public boolean existePersona(SessionFactory conexion, Persona persona) {
+        Session sesion = conexion.openSession();
+        Transaction transaccion = null;
+
+        try {
+            Query consulta;
+            List listaVotantes;
+
+            transaccion = sesion.beginTransaction();
+            consulta = sesion.createQuery("FROM Persona WHERE DNI = :persona_dni");
+            consulta.setParameter("persona_dni", persona.getDni());
+            listaVotantes = consulta.list();
+            transaccion.commit();
+            return listaVotantes.iterator().hasNext();
+        } catch (HibernateException e) {
+            if (transaccion != null) {
+                transaccion.rollback();
+            }
+            return false;
+        }
+    }
+
     public String altaPersona(SessionFactory conexion, Persona persona) {
         Session sesion = conexion.openSession();
         Transaction transaccion = null;
@@ -35,7 +57,7 @@ public class Operacion {
             List lista;
 
             transaccion = sesion.beginTransaction();
-            consulta = sesion.createQuery("FROM persona WHERE DNI=:persona_dni");
+            consulta = sesion.createQuery("FROM persona WHERE DNI = :persona_dni");
             consulta.setParameter("persona_dni", persona.getDni());
             lista = consulta.list();
 

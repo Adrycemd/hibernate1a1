@@ -32,15 +32,15 @@ public class controladorAltaPersona extends HttpServlet {
         Persona persona = new Persona(new Direccion(calle, numero, piso, letra), dni, nombre, apellidos, telefono);
         String mensaje;
 
-//        if (operacion.existePersona(conexion, persona)) {
-//            mensaje = "La persona ya existe en el sistema.";
-//            sesion.setAttribute("mensaje", mensaje);
-//            response.sendRedirect("vista/mensaje.jsp");
-//        } else {
-//            mensaje = operacion.altaPersona(conexion, persona);
-//            sesion.setAttribute("mensaje", mensaje);
-//            response.sendRedirect("vista/mensaje.jsp");
-//        }
+        if (operacion.existePersona(conexion, persona)) {
+            mensaje = "La persona ya existe en el sistema.";
+            sesion.setAttribute("mensaje", mensaje);
+            response.sendRedirect("vista/mensaje.jsp");
+        } else {
+            mensaje = operacion.altaPersona(conexion, persona);
+            sesion.setAttribute("mensaje", mensaje);
+            response.sendRedirect("vista/mensaje.jsp");
+        }
     }
 
     @Override
