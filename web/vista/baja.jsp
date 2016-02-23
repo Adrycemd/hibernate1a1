@@ -22,6 +22,7 @@
                     <label for="dni">DNI</label>
                     <input id="dni" name="dni" type="text" maxlength="9" />
                 </div>
+                <br>
                 <input class="pure-button pure-button-primary" type="submit" id="boton" name="boton" value="Dar de baja" />
             </form>
         </div>

@@ -19,6 +19,9 @@ public class Persona  implements java.io.Serializable {
     public Persona() {
     }
 
+    public Persona(String dni) {
+        this.dni = dni;
+    }
 	
     public Persona(Direccion direccion) {
         this.direccion = direccion;
@@ -75,8 +78,10 @@ public class Persona  implements java.io.Serializable {
         this.telefono = telefono;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "Persona{" + "id=" + id + ", direccion=" + direccion + ", dni=" + dni + ", nombre=" + nombre + ", apellidos=" + apellidos + ", telefono=" + telefono + '}';
+    }
 
 }
 

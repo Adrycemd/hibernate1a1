@@ -8,6 +8,10 @@
         <servlet-name>controladorAltaPersona</servlet-name>
         <servlet-class>bll.controladorAltaPersona</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>controladorBajaPersona</servlet-name>
+        <servlet-class>bll.controladorBajaPersona</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>/dispatcher</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>controladorAltaPersona</servlet-name>
         <url-pattern>/controladorAltaPersona</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>controladorBajaPersona</servlet-name>
+        <url-pattern>/controladorBajaPersona</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
