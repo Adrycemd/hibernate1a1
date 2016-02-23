@@ -22,10 +22,15 @@ public class controladorListar extends HttpServlet {
         HttpSession sesion = request.getSession();
         Operacion operacion = new Operacion();
         ArrayList<Persona> personas;
-        
+
         personas = operacion.damePersonas(conexion);
-        sesion.setAttribute("personas", personas);
-        response.sendRedirect("vista/listar.jsp");
+        if (personas.size() > 0) {
+            sesion.setAttribute("personas", personas);
+            response.sendRedirect("vista/listar.jsp");
+        }else{
+            sesion.setAttribute("mensaje", "No hay Personas almacenadas en el sistema.");
+            response.sendRedirect("vista/mensaje.jsp");
+        }
     }
 
     @Override
