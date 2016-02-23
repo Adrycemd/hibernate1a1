@@ -12,6 +12,14 @@
         <servlet-name>controladorBajaPersona</servlet-name>
         <servlet-class>bll.controladorBajaPersona</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>controladorModificarPersona</servlet-name>
+        <servlet-class>bll.controladorModificarPersona</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>controladorModificarPersona2</servlet-name>
+        <servlet-class>bll.controladorModificarPersona2</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>/dispatcher</url-pattern>
@@ -23,6 +31,14 @@
     <servlet-mapping>
         <servlet-name>controladorBajaPersona</servlet-name>
         <url-pattern>/controladorBajaPersona</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>controladorModificarPersona</servlet-name>
+        <url-pattern>/controladorModificarPersona</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>controladorModificarPersona2</servlet-name>
+        <url-pattern>/controladorModificarPersona2</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

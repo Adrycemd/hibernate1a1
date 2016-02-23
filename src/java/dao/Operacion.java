@@ -16,14 +16,14 @@ public class Operacion {
 
         try {
             Query consulta;
-            List listaVotantes;
+            List lista;
 
             transaccion = sesion.beginTransaction();
             consulta = sesion.createQuery("FROM Persona WHERE DNI = :persona_dni");
             consulta.setParameter("persona_dni", persona.getDni());
-            listaVotantes = consulta.list();
+            lista = consulta.list();
             transaccion.commit();
-            return listaVotantes.iterator().hasNext();
+            return lista.iterator().hasNext();
         } catch (HibernateException e) {
             if (transaccion != null) {
                 transaccion.rollback();
@@ -45,13 +45,14 @@ public class Operacion {
             if (transaccion != null) {
                 transaccion.rollback();
             }
-            return "Error al dar de alta a la persona";
+            return e.getMessage();
         }
     }
 
     public String bajaPersona(SessionFactory conexion, Persona persona) {
         Session sesion = conexion.openSession();
         Transaction transaccion = null;
+
         try {
             Query consulta;
             List lista;
@@ -71,7 +72,50 @@ public class Operacion {
             if (transaccion != null) {
                 transaccion.rollback();
             }
-            return "Error al dar de baja a la persona.";
+            return e.getMessage();
+        }
+    }
+
+    public Persona damePersona(SessionFactory conexion, Persona persona) {
+        Session sesion = conexion.openSession();
+        Transaction transaccion = null;
+
+        try {
+            Query consulta;
+            List lista;
+
+            transaccion = sesion.beginTransaction();
+            consulta = sesion.createQuery("FROM Persona WHERE DNI = :persona_dni");
+            consulta.setParameter("persona_dni", persona.getDni());
+            lista = consulta.list();
+            transaccion.commit();
+            
+            Persona personaRetornable = (Persona) lista.iterator().next();
+            
+            return personaRetornable;
+        } catch (HibernateException e) {
+            if (transaccion != null) {
+                transaccion.rollback();
+            }
+            return new Persona("0");
+        }
+    }
+    
+    public String modificarPersona (SessionFactory conexion, Persona persona) {
+        Session sesion = conexion.openSession();
+        Transaction transaccion = null;
+        Persona personaModificable = (Persona) sesion.merge(persona);
+        
+        try {
+            transaccion = sesion.beginTransaction();
+            sesion.update(personaModificable);
+            transaccion.commit();
+            return "Persona modificada con éxito";
+        } catch (HibernateException e) {
+            if (transaccion != null) {
+                transaccion.rollback();
+            }
+            return e.getMessage();
         }
     }
 

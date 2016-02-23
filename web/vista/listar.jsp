@@ -1,5 +1,5 @@
 <%-- 
-    Document   : eliminar
+    Document   : listar
     Created on : 15-feb-2016, 13:17:57
     Author     : Sara Aamoraga
 --%>
@@ -16,10 +16,7 @@
     </head>
     <body>
         <div id="formulario">
-            <h1>Eliminar a una Persona</h1>
-            <form class="pure-form pure-form-aligned" method="post" action="../dispatcher">
-         
-            </form>
+            <h1>Listar Personas en el sistema</h1>
         </div>
     </body>
 </html>

@@ -8,11 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import dao.Operacion;
+import java.io.PrintWriter;
 import pojo.Persona;
 import pojo.Direccion;
 import org.hibernate.SessionFactory;
 
-public class controladorBajaPersona extends HttpServlet {
+public class controladorModificarPersona2 extends HttpServlet {
 
     private SessionFactory conexion;
 
@@ -21,26 +22,33 @@ public class controladorBajaPersona extends HttpServlet {
 
         HttpSession sesion = request.getSession();
         Operacion operacion = new Operacion();
-        String dni = request.getParameter("dni").toUpperCase().trim();
-        Persona persona = new Persona(dni);
+        Persona persona = (Persona) sesion.getAttribute("persona");
+        String nombre = request.getParameter("nombre").toUpperCase().trim();
+        String apellidos = request.getParameter("apellidos").toUpperCase().trim();
+        String telefono = request.getParameter("telefono").toUpperCase().trim();
+        String calle = request.getParameter("calle").toUpperCase().trim();
+        int numero = Integer.parseInt(request.getParameter("numero").trim());
+        int piso = Integer.parseInt(request.getParameter("piso").trim());
+        char letra = request.getParameter("letra").toUpperCase().trim().toCharArray()[0];
         String mensaje;
 
-        if (!operacion.existePersona(conexion, persona)) {
-            mensaje = "La persona no existe en el sistema.";
-            sesion.setAttribute("mensaje", mensaje);
-            response.sendRedirect("vista/mensaje.jsp");
-        } else {
-            mensaje = operacion.bajaPersona(conexion, persona);
-            sesion.setAttribute("mensaje", mensaje);
-            response.sendRedirect("vista/mensaje.jsp");
-        }
+        persona.setNombre(nombre);
+        persona.setApellidos(apellidos);
+        persona.setTelefono(telefono);
+        persona.getDireccion().setCalle(calle);
+        persona.getDireccion().setNumero(numero);
+        persona.getDireccion().setPiso(piso);
+        persona.getDireccion().setLetra(letra);
+        mensaje = operacion.modificarPersona(conexion, persona);
+        sesion.setAttribute("mensaje", mensaje);
+        response.sendRedirect("vista/mensaje.jsp");
     }
 
     @Override
     public void init() throws ServletException {
         conexion = HibernateUtil.getSessionFactory();
     }
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -55,7 +63,7 @@ public class controladorBajaPersona extends HttpServlet {
 
     @Override
     public String getServletInfo() {
-        return "Encargado de dar de baja a la persona si no existe.";
+        return "Encargado de dar de alta a la persona si no existe.";
     }
 
 }

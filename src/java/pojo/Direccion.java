@@ -77,12 +77,9 @@ public class Direccion  implements java.io.Serializable {
         this.persona = persona;
     }
 
-    public Direccion(Integer id, String calle, Integer numero, Integer piso, Character letra) {
-        this.id = id;
-        this.calle = calle;
-        this.numero = numero;
-        this.piso = piso;
-        this.letra = letra;
+    @Override
+    public String toString() {
+        return "Direccion{" + "id=" + id + ", calle=" + calle + ", numero=" + numero + ", piso=" + piso + ", letra=" + letra + '}';
     }
-
+    
 }

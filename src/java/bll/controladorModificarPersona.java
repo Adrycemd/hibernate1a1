@@ -9,10 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import dao.Operacion;
 import pojo.Persona;
-import pojo.Direccion;
 import org.hibernate.SessionFactory;
 
-public class controladorBajaPersona extends HttpServlet {
+public class controladorModificarPersona extends HttpServlet {
 
     private SessionFactory conexion;
 
@@ -30,9 +29,9 @@ public class controladorBajaPersona extends HttpServlet {
             sesion.setAttribute("mensaje", mensaje);
             response.sendRedirect("vista/mensaje.jsp");
         } else {
-            mensaje = operacion.bajaPersona(conexion, persona);
-            sesion.setAttribute("mensaje", mensaje);
-            response.sendRedirect("vista/mensaje.jsp");
+            persona = operacion.damePersona(conexion, persona);
+            sesion.setAttribute("persona", persona);
+            response.sendRedirect("vista/modificar2.jsp");
         }
     }
 
@@ -40,7 +39,7 @@ public class controladorBajaPersona extends HttpServlet {
     public void init() throws ServletException {
         conexion = HibernateUtil.getSessionFactory();
     }
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -55,7 +54,7 @@ public class controladorBajaPersona extends HttpServlet {
 
     @Override
     public String getServletInfo() {
-        return "Encargado de dar de baja a la persona si no existe.";
+        return "Encargado de subir los datos de la persona a sesión para su modificación posterior.";
     }
 
 }

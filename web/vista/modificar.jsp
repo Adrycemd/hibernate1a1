@@ -18,7 +18,12 @@
         <div id="formulario">
             <h1>Modificar los datos de una Persona</h1>
             <form class="pure-form pure-form-aligned" method="post" action="../dispatcher">
-         
+                <div class="pure-control-group">
+                    <label for="dni">DNI</label>
+                    <input id="dni" name="dni" type="text" maxlength="9" />
+                </div>
+                <br>
+                <input class="pure-button pure-button-primary" type="submit" id="boton" name="boton" value="Modificar Persona" />
             </form>
         </div>
     </body>
