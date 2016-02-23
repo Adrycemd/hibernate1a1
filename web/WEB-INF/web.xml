@@ -20,6 +20,10 @@
         <servlet-name>controladorModificarPersona2</servlet-name>
         <servlet-class>bll.controladorModificarPersona2</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>controladorListar</servlet-name>
+        <servlet-class>bll.controladorListar</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>/dispatcher</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>controladorModificarPersona2</servlet-name>
         <url-pattern>/controladorModificarPersona2</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>controladorListar</servlet-name>
+        <url-pattern>/controladorListar</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

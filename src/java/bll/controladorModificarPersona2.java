@@ -8,9 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import dao.Operacion;
-import java.io.PrintWriter;
 import pojo.Persona;
-import pojo.Direccion;
 import org.hibernate.SessionFactory;
 
 public class controladorModificarPersona2 extends HttpServlet {
@@ -63,7 +61,7 @@ public class controladorModificarPersona2 extends HttpServlet {
 
     @Override
     public String getServletInfo() {
-        return "Encargado de dar de alta a la persona si no existe.";
+        return "Encargado de mandar la persona con los datos modificados al dao.";
     }
 
 }

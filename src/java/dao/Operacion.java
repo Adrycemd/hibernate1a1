@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -97,7 +99,7 @@ public class Operacion {
             if (transaccion != null) {
                 transaccion.rollback();
             }
-            return new Persona("0");
+            return null;
         }
     }
     
@@ -117,6 +119,33 @@ public class Operacion {
             }
             return e.getMessage();
         }
+    }
+    
+    public ArrayList<Persona> damePersonas (SessionFactory conexion) {
+        Session sesion = conexion.openSession();
+        Transaction transaccion = null;
+        ArrayList<Persona> personas = new ArrayList<>();
+                
+        try {
+            Query consulta;
+            List lista;
+
+            transaccion = sesion.beginTransaction();
+            consulta = sesion.createQuery("FROM Persona");
+            lista = consulta.list();
+            
+            Iterator iterador = lista.iterator();
+            
+            while(iterador.hasNext()){
+                personas.add((Persona) iterador.next());
+            }
+            transaccion.commit();
+        } catch (HibernateException e) {
+            if (transaccion != null) {
+                transaccion.rollback();
+            }
+        }
+        return personas;
     }
 
 }

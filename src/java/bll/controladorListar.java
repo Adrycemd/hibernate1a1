@@ -8,11 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import dao.Operacion;
-import pojo.Persona;
-import pojo.Direccion;
+import java.util.ArrayList;
 import org.hibernate.SessionFactory;
+import pojo.Persona;
 
-public class controladorBajaPersona extends HttpServlet {
+public class controladorListar extends HttpServlet {
 
     private SessionFactory conexion;
 
@@ -21,26 +21,18 @@ public class controladorBajaPersona extends HttpServlet {
 
         HttpSession sesion = request.getSession();
         Operacion operacion = new Operacion();
-        String dni = request.getParameter("dni").toUpperCase().trim();
-        Persona persona = new Persona(dni);
-        String mensaje;
-
-        if (!operacion.existePersona(conexion, persona)) {
-            mensaje = "La persona no existe en el sistema.";
-            sesion.setAttribute("mensaje", mensaje);
-            response.sendRedirect("vista/mensaje.jsp");
-        } else {
-            mensaje = operacion.bajaPersona(conexion, persona);
-            sesion.setAttribute("mensaje", mensaje);
-            response.sendRedirect("vista/mensaje.jsp");
-        }
+        ArrayList<Persona> personas;
+        
+        personas = operacion.damePersonas(conexion);
+        sesion.setAttribute("personas", personas);
+        response.sendRedirect("vista/listar.jsp");
     }
 
     @Override
     public void init() throws ServletException {
         conexion = HibernateUtil.getSessionFactory();
     }
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -55,7 +47,7 @@ public class controladorBajaPersona extends HttpServlet {
 
     @Override
     public String getServletInfo() {
-        return "Encargado de dar de baja a la persona si existe.";
+        return "Encargado de recuperar las personas y mandarlas a la vista.";
     }
 
 }
