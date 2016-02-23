@@ -18,7 +18,11 @@
         <div id="formulario">
             <h1>Dar de baja a Persona</h1>
             <form class="pure-form pure-form-aligned" method="post" action="../dispatcher">
-         
+                <div class="pure-control-group">
+                    <label for="dni">DNI</label>
+                    <input id="dni" name="dni" type="text" maxlength="9" />
+                </div>
+                <input class="pure-button pure-button-primary" type="submit" id="boton" name="boton" value="Dar de baja" />
             </form>
         </div>
     </body>

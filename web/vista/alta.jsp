@@ -56,7 +56,7 @@
                         <input id="letra" name="letra" type="text" maxlength="1" />
                     </div>
                 </fieldset>
-                <input class="pure-button pure-button-primary" type="submit" id="boton" name="boton" value="AltaPersona" />
+                <input class="pure-button pure-button-primary" type="submit" id="boton" name="boton" value="Dar de alta" />
             </form>
         </div>
     </body>
